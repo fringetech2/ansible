@@ -1,0 +1,14 @@
+---
+- name: Deploy website
+  hosts: all
+  vars:
+        debug_tools: True
+  tasks:
+    - debug:
+        msg: Installing with debug tools enabled.
+      when: debug_tools
+
+    - name: Custom page is added
+      win_copy:
+        content: "Hello!"
+        dest: C:\Inetpub\wwwroot\example.html
